@@ -35,8 +35,12 @@ function findElement(arr, value) {
  *    2 => [ 1, 3 ]
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len, arr = [1], current = 1) {
+  if (len !== 1) {
+    arr.push(current + 2);
+    return generateOdds(len - 1, arr, current + 2);
+  }
+  return arr;
 }
 
 
@@ -52,8 +56,8 @@ function generateOdds(/* len */) {
  *    [0, 1, 2, 3, 4, 5] => [0, 1, 2, 3, 4, 5,   0, 1, 2, 3, 4, 5]
  *    [] => []
  */
-function doubleArray(/* arr */) {
-  throw new Error('Not implemented');
+function doubleArray(arr) {
+  return [...arr, ...arr];
 }
 
 
@@ -174,8 +178,8 @@ function getHead(arr, n) {
  *    [ 1, 3, 4, 5 ], 2  => [ 4, 5 ]
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
-function getTail(/* arr, n */) {
-  throw new Error('Not implemented');
+function getTail(arr, n) {
+  return arr.slice(arr.length - n);
 }
 
 
@@ -373,8 +377,8 @@ function getFalsyValuesCount(arr) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  return arr.filter((el) => el === item).length;
 }
 
 /**
@@ -388,8 +392,8 @@ function findAllOccurrences(/* arr, item */) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join();
 }
 
 
@@ -421,6 +425,8 @@ function toStringList(/* arr */) {
  */
 function sortCitiesArray(/* arr */) {
   throw new Error('Not implemented');
+  // const newArr = arr.sort((a, b) => a.city > b.city ? 1 : -1);
+  // return newArr.sort((a, b) => a.country >= b.country ? 1 : -1);
 }
 
 /**
@@ -458,8 +464,12 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end, arr = [start]) {
+  if (start !== end) {
+    arr.push(start + 1);
+    getIntervalArray(start + 1, end, arr);
+  }
+  return arr;
 }
 
 /**
@@ -473,8 +483,8 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return [...new Set([...arr])];
 }
 
 /**
